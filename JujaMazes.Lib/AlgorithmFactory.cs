@@ -8,10 +8,10 @@ namespace JujaMazes.Lib
         public int MazeWidth { get; set; }
         public int MazeHeight { get; set; }
 
-        public IMazeAlgorithm GetAlgorithm(Algorithm algorithm)
+        public IMazeAlgorithm GetAlgorithm(Enums.Algorithms algorithm)
             => algorithm switch
             {
-                Algorithm.Eller => new EllerAlgorithm() { MazeWidth = MazeWidth, MazeHeight = MazeHeight },
+                Enums.Algorithms.Eller => new EllerAlgorithm() { MazeWidth = MazeWidth, MazeHeight = MazeHeight },
                 _ => throw new NotImplementedException(),
             };
     }
