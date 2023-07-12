@@ -40,7 +40,7 @@ namespace JujaMazes.Lib.Algorithms
             CreateOtherLines(cells, sets);
             CreateEndLine(cells, sets);
 
-
+            CreateLeftWall(cells);
 #if DEBUG 
             for(var i = 0; i < MazeHeight; i++)
             {
@@ -56,8 +56,6 @@ namespace JujaMazes.Lib.Algorithms
             maze = mazeBuilder.Build(cells).Normalize();
             return maze;
         }
-
-
 
         private Cell[,] CreateCells()
         {
@@ -230,6 +228,12 @@ namespace JujaMazes.Lib.Algorithms
                     sets[row, i] = 0;
                 }
 
+        }
+
+        private void CreateLeftWall(Cell[,] cells)
+        {
+            for (int i = 1; i < MazeHeight; i++)
+                cells[i, 0].LeftWall = true;
         }
 
         private bool ChooseRandomly()
