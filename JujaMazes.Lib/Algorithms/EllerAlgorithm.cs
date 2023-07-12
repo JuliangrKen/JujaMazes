@@ -89,7 +89,6 @@ namespace JujaMazes.Lib.Algorithms
             AddWalls(cells, sets, 0);
         }
 
-
         private void CreateOtherLines(Cell[,] cells, int[,] sets)
         {
             for (int i = 1; i < MazeHeight - 1; i++)
@@ -99,13 +98,13 @@ namespace JujaMazes.Lib.Algorithms
         private void CreateEndLine(Cell[,] cells, int[,] sets)
         {
             var lastIndex = MazeHeight - 1;
-            
+
             AddNextLine(cells, sets, lastIndex);
 
             for (int i = 0; i < MazeWidth - 1; i++)
             {
                 var cell = cells[lastIndex, i];
-                
+
                 // Add a bottom wall to every cell
                 cell.BottomWall = true;
 
@@ -135,7 +134,7 @@ namespace JujaMazes.Lib.Algorithms
         {
             // Join any cells not members of a set to their own unique set
             SetUniqueSet(sets, row);
-            
+
             AddRandomRightWalls(cells, sets, row);
             AddRandomBottomWalls(cells, sets, row);
         }
@@ -228,7 +227,7 @@ namespace JujaMazes.Lib.Algorithms
             {
                 if (cells[row - 1, i].BottomWall)
                     sets[row, i] = 0;
-                }
+            }
 
         }
 
