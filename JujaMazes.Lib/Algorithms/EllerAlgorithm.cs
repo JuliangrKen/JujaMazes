@@ -41,8 +41,10 @@ namespace JujaMazes.Lib.Algorithms
             CreateEndLine(cells, sets);
 
             CreateLeftWall(cells);
+            RemoveLastRightWall(cells);
+
 #if DEBUG 
-            for(var i = 0; i < MazeHeight; i++)
+            for (var i = 0; i < MazeHeight; i++)
             {
                 for (var j = 0; j < MazeWidth; j++)
                 {
@@ -234,6 +236,11 @@ namespace JujaMazes.Lib.Algorithms
         {
             for (int i = 1; i < MazeHeight; i++)
                 cells[i, 0].LeftWall = true;
+        }
+
+        private void RemoveLastRightWall(Cell[,] cells)
+        {
+            cells[MazeHeight - 1, MazeWidth - 1].RightWall = false;
         }
 
         private bool ChooseRandomly()
