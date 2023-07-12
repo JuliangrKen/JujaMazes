@@ -17,7 +17,7 @@ namespace JujaMazes.Lib.Algorithms
         private Maze? maze;
         public Maze? LastMaze => maze;
 
-        private int LastId = 0;
+        private int LastId;
 
         private readonly Random random = new();
         private readonly IMazeBuilder mazeBuilder = new MazeBuilder();
@@ -32,6 +32,8 @@ namespace JujaMazes.Lib.Algorithms
         {
             if (MazeWidth < 2 || MazeHeight < 2)
                 throw new IncorrectMazeSizeException();
+
+            LastId = 0;
 
             var cells = CreateCells();
             var sets = CreateSets();
