@@ -1,4 +1,5 @@
-﻿using JujaMazes.Lib.Exceptions;
+﻿using JujaMazes.Lib.Enums;
+using JujaMazes.Lib.Exceptions;
 using JujaMazes.Lib.Models;
 using JujaMazes.Lib.Utils;
 
@@ -13,13 +14,21 @@ namespace JujaMazes.Lib.Algorithms
 
         public int MazeWidth { get; set; }
         public int MazeHeight { get; set; }
+        
+        public IDecisionMaker DecisionMaker { get; set; }
+
+        public EllerAlgorithm(int mazeWidth, int mazeHeight, IDecisionMaker decisionMaker)
+        {
+            MazeWidth = mazeWidth;
+            MazeHeight = mazeHeight;
+            DecisionMaker = decisionMaker;
+        }
 
         private Maze? maze;
         public Maze? LastMaze => maze;
 
-        private int LastId;
+        private int lastId;
 
-        private readonly Random random = new();
         private readonly IMazeBuilder mazeBuilder = new MazeBuilder();
 
         /// <summary>
@@ -33,7 +42,7 @@ namespace JujaMazes.Lib.Algorithms
             if (MazeWidth < 2 || MazeHeight < 2)
                 throw new IncorrectMazeSizeException();
 
-            LastId = 0;
+            lastId = 0;
 
             var cells = CreateCells();
             var sets = CreateSets();
@@ -156,7 +165,7 @@ namespace JujaMazes.Lib.Algorithms
                 }
 
                 //Randomly decide to add a wall or not
-                cell.RightWall = ChooseRandomly();
+                cell.RightWall = DecisionMaker.Decide(Walls.Vertical);
 
                 // If you decide not to add a wall, union the sets to which
                 // the current cell and the cell to the right are members
@@ -196,7 +205,7 @@ namespace JujaMazes.Lib.Algorithms
                 }
 
                 // Randomly decide to add a wall or not.
-                cell.BottomWall = ChooseRandomly();
+                cell.BottomWall = DecisionMaker.Decide(Walls.Horisontal);
             }
         }
 
@@ -209,7 +218,7 @@ namespace JujaMazes.Lib.Algorithms
         {
             for (int i = 0; i < MazeHeight; i++)
                 if (sets[row, i] == 0)
-                    sets[row, i] = ++LastId;
+                    sets[row, i] = ++lastId;
         }
 
         private int[,] CopySetsToRow(int[,] sets, int fromRow, int toRow)
@@ -243,8 +252,5 @@ namespace JujaMazes.Lib.Algorithms
         {
             cells[MazeHeight - 1, MazeWidth - 1].RightWall = false;
         }
-
-        private bool ChooseRandomly()
-            => random.Next(1, 100) > 50;
     }
 }
