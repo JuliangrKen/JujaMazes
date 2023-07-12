@@ -46,6 +46,7 @@ namespace JujaMazes.Lib.Algorithms
             {
                 for (var j = 0; j < MazeWidth; j++)
                 {
+                    Console.Write(' ');
                     Console.Write(sets[i, j]);
                 }
                 Console.WriteLine();
