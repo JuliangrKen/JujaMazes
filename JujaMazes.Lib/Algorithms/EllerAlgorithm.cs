@@ -1,8 +1,6 @@
 ﻿using JujaMazes.Lib.Exceptions;
 using JujaMazes.Lib.Models;
 using JujaMazes.Lib.Utils;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace JujaMazes.Lib.Algorithms
 {
