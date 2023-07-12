@@ -8,23 +8,26 @@ namespace JujaMazes.ConsoleApp
         /// Временное решение для дебага. Стоит переписать алгоритм.
         public string GetMazeAscii(Maze maze)
         {
-            var str = string.Empty;
+            var numCharsInLine = (maze.Width - 1) * 2 + 1;
+
+            var str = new string(new byte[numCharsInLine].Select(x => '_').ToArray()) + '\n';
 
             var matrix = maze.GetCellsMatrix();
 
-            for(int i = 0; i < maze.Height; i++)
+            for (int i = 0; i < maze.Height; i++)
             {
-                str += '|';
+                var row = new char[numCharsInLine];
 
-                for (int j = 0; j < maze.Width; j++)
+                var rIndex = 0;
+                row[rIndex++] = matrix[i, 0].LeftWall ? '|' : ' ';
+                
+                for (int j = 1; j < maze.Width; j++)
                 {
-                    var cell = matrix[i, j];
-
-                    str += cell.BottomWall ? '_' : ' ';
-                    str += cell.RightWall ?  '|' : ' ';
+                    row[rIndex++] = matrix[i, j].BottomWall ? '_' : ' ';
+                    row[rIndex++] = matrix[i, j].RightWall ? '|' : ' ';
                 }
 
-                str += '\n';
+                str += new string(row) + '\n';
             }
 
             return str;
