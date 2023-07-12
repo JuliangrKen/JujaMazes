@@ -42,6 +42,18 @@ namespace JujaMazes.Lib.Algorithms
             CreateOtherLines(cells, sets);
             CreateEndLine(cells, sets);
 
+
+#if DEBUG 
+            for(var i = 0; i < MazeHeight; i++)
+            {
+                for (var j = 0; j < MazeWidth; j++)
+                {
+                    Console.Write(sets[i, j]);
+                }
+                Console.WriteLine();
+            }
+#endif
+
             maze = mazeBuilder.Build(cells).Normalize();
             return maze;
         }
@@ -215,9 +227,9 @@ namespace JujaMazes.Lib.Algorithms
             // Remove cells with a bottom-wall from their set
             for (int i = 0; i < MazeWidth; i++)
             {
-                if (cells[row, i].BottomWall)
+                if (cells[row - 1, i].BottomWall)
                     sets[row, i] = 0;
-            }
+                }
 
         }
 
