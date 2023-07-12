@@ -213,10 +213,10 @@ namespace JujaMazes.Lib.Algorithms
         private void RemoveCellsWithButtomWalls(Cell[,] cells, int[,] sets, int row)
         {
             // Remove cells with a bottom-wall from their set
-            for (int j = 0; j < MazeWidth; j++)
+            for (int i = 0; i < MazeWidth; i++)
             {
-                if (cells[row, j].BottomWall)
-                    sets[row, j] = 0;
+                if (cells[row, i].BottomWall)
+                    sets[row, i] = 0;
             }
 
         }
