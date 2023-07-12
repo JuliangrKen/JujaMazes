@@ -1,6 +1,6 @@
 ﻿namespace JujaMazes.Lib.Enums
 {
-    public enum Algorithms
+    public enum Algorithm
     {
         Eller,
     }

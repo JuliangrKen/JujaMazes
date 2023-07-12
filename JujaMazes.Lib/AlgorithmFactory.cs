@@ -1,4 +1,5 @@
 ﻿using JujaMazes.Lib.Algorithms;
+using JujaMazes.Lib.Enums;
 
 namespace JujaMazes.Lib
 {
@@ -8,10 +9,10 @@ namespace JujaMazes.Lib
         public int MazeHeight { get; set; }
         public IDecisionMaker DecisionMaker { get; set; } = new DefaultDecisionMaker();
 
-        public IMazeAlgorithm GetAlgorithm(Enums.Algorithms algorithm)
+        public IMazeAlgorithm GetAlgorithm(Algorithm algorithm)
             => algorithm switch
             {
-                Enums.Algorithms.Eller => new EllerAlgorithm(MazeWidth, MazeHeight, DecisionMaker),
+                Algorithm.Eller => new EllerAlgorithm(MazeWidth, MazeHeight, DecisionMaker),
                 _ => throw new NotImplementedException(),
             };
     }

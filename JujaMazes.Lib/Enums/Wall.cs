@@ -1,6 +1,6 @@
 ﻿namespace JujaMazes.Lib.Enums
 {
-    public enum Walls
+    public enum Wall
     {
         Horisontal,
         Vertical

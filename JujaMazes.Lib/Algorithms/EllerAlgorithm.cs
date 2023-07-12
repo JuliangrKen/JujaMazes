@@ -165,7 +165,7 @@ namespace JujaMazes.Lib.Algorithms
                 }
 
                 //Randomly decide to add a wall or not
-                cell.RightWall = DecisionMaker.Decide(Walls.Vertical);
+                cell.RightWall = DecisionMaker.Decide(Wall.Vertical);
 
                 // If you decide not to add a wall, union the sets to which
                 // the current cell and the cell to the right are members
@@ -205,7 +205,7 @@ namespace JujaMazes.Lib.Algorithms
                 }
 
                 // Randomly decide to add a wall or not.
-                cell.BottomWall = DecisionMaker.Decide(Walls.Horisontal);
+                cell.BottomWall = DecisionMaker.Decide(Wall.Horisontal);
             }
         }
 

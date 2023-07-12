@@ -8,7 +8,7 @@ namespace JujaMazes.Lib
         /// <summary>
         /// 50 / 50
         /// </summary>
-        public bool Decide(Walls wall)
+        public bool Decide(Wall wall)
             => RandomNumberGenerator.GetInt32(1, 101) > 50;
     }
 }
