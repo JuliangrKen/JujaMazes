@@ -1,6 +1,4 @@
-﻿using JujaMazes.Lib.Enums;
-
-namespace JujaMazes.Lib
+﻿namespace JujaMazes.Lib
 {
     public interface IAlgorithmFactory
     {
