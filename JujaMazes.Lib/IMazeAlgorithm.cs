@@ -5,6 +5,12 @@ namespace JujaMazes.Lib
     public interface IMazeAlgorithm
     {
         string AlgorithmName { get; }
-        Maze GenerateMaze(int weight, int height); 
+        
+        int MazeWidth { get; set; }
+        int MazeHeight { get; set; }
+
+        Maze? LastMaze { get; }
+
+        Maze GenerateMaze(); 
     }
 }
