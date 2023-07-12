@@ -33,7 +33,7 @@ namespace JujaMazes.Lib.Utils
         /// Ensures that the cells will match each other.
         /// Priority for the presence of a wall!
         /// </summary>
-        public static void Normalize(this Maze maze, bool vertical = true, bool horizontal = true)
+        public static Maze Normalize(this Maze maze, bool vertical = true, bool horizontal = true)
         {
             var matrix = maze.GetCellsMatrix();
 
@@ -47,12 +47,14 @@ namespace JujaMazes.Lib.Utils
 
             // Apply:
             maze.Cells = new MazeBuilder().Build(matrix).Cells;
+
+            return maze;
         }
 
-        public static void NormalizeVertical(this Maze maze)
+        public static Maze NormalizeVertical(this Maze maze)
             => Normalize(maze, true, false);
 
-        public static void NormalizeHorizontal(this Maze maze)
+        public static Maze NormalizeHorizontal(this Maze maze)
             => Normalize(maze, false, true);
 
         private static void NormalizeVertical(Cell[,] matrix)
