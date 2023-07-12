@@ -5,7 +5,6 @@ namespace JujaMazes.ConsoleApp
 {
     internal class MazeViewer
     {
-        /// Временное решение для дебага. Стоит переписать алгоритм.
         public string GetMazeAscii(Maze maze)
         {
             var numCharsInLine = (maze.Width - 1) * 2 + 1;
