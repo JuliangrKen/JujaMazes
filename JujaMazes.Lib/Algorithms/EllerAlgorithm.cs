@@ -39,8 +39,7 @@ namespace JujaMazes.Lib.Algorithms
         /// </summary>
         public Maze GenerateMaze()
         {
-            if (MazeWidth < 2 || MazeHeight < 2)
-                throw new IncorrectMazeSizeException();
+            MazeTools.HandleSize(MazeWidth, MazeHeight);
 
             lastId = 0;
 
