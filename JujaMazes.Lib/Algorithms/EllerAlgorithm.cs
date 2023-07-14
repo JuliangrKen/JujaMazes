@@ -236,7 +236,6 @@ namespace JujaMazes.Lib.Algorithms
                 if (cells[row - 1, i].BottomWall)
                     sets[row, i] = 0;
             }
-
         }
 
         private void CreateLeftWall(Cell[,] cells)
