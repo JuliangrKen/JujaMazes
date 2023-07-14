@@ -85,7 +85,7 @@ namespace JujaMazes.Lib.Algorithms
 
         private void CreateFirstLine(Cell[,] cells, int[,] sets)
         {
-            // All cells in the first row have a wall
+            // All cells in the first row have a top wall
             for (int i = 0; i < MazeWidth; i++)
                 cells[0, i].TopWall = true;
 
