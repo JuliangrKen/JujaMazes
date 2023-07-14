@@ -65,8 +65,7 @@ namespace JujaMazes.Lib.Algorithms
             }
 #endif
 
-            maze = mazeBuilder.Build(cells).Normalize();
-            return maze;
+            return mazeBuilder.Build(cells).Normalize();
         }
 
         private Cell[,] CreateCells()
