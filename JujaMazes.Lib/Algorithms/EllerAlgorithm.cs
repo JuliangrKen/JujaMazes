@@ -13,7 +13,7 @@ namespace JujaMazes.Lib.Algorithms
 
         public int MazeWidth { get; set; }
         public int MazeHeight { get; set; }
-        
+
         public IDecisionMaker DecisionMaker { get; set; }
 
         public EllerAlgorithm(int mazeWidth, int mazeHeight, IDecisionMaker decisionMaker)
